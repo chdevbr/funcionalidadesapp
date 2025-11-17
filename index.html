@@ -1,262 +1,114 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tabela de Funcionalidades</title>
-  <style>
-    :root{
-      --bg:#f6fbff;
-      --card:#ffffff;
-      --accent:#1e90ff;
-      --accent-2:#ffd166;
-      --muted:#6b7280;
-      --ia-bg: linear-gradient(90deg, rgba(30,144,255,0.12), rgba(255,209,102,0.10));
-      --radius:12px;
-      font-family: "Inter", "Segoe UI", Roboto, system-ui, -apple-system, sans-serif;
-    }
+<meta charset="UTF-8">
+<title>Análise de Concorrentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-    body{
-      margin:0;
-      background:var(--bg);
-      color:#0f172a;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:32px;
-    }
+<style>
+body {
+    font-family: "Inter", sans-serif;
+    background: #f3f4f7;
+    padding: 40px;
+}
 
-    .container{
-      max-width:1100px;
-      margin:0 auto;
-      background:var(--card);
-      border-radius:var(--radius);
-      box-shadow:0 6px 24px rgba(12,20,30,0.06);
-      padding:22px;
-      border:1px solid rgba(15,23,42,0.04);
-    }
+.table-container {
+    background: white;
+    margin: auto;
+    padding: 30px;
+    border-radius: 18px;
+    max-width: 1200px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
 
-    header{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      margin-bottom:18px;
-    }
+h2 {
+    text-align: center;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
 
-    .logo{
-      width:52px;
-      height:52px;
-      border-radius:10px;
-      background:linear-gradient(135deg,var(--accent),#7bd389);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      font-weight:700;
-      box-shadow:0 6px 18px rgba(30,144,255,0.12);
-    }
+.subtitle {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #666;
+}
 
-    h1{
-      margin:0;
-      font-size:20px;
-      letter-spacing:0.2px;
-    }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
 
-    p.subtitle{
-      margin:6px 0 18px 0;
-      color:var(--muted);
-      font-size:14px;
-    }
+th {
+    background: #eef2f7;
+    padding: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
 
-    .table-wrap{
-      overflow:auto;
-      border-radius:10px;
-    }
+td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
 
-    table{
-      width:100%;
-      border-collapse:separate;
-      border-spacing:0 12px;
-      min-width:880px;
-    }
+.check {
+    font-size: 22px;
+    color: #33b38d;
+}
 
-    thead th{
-      text-align:left;
-      font-size:13px;
-      color:var(--muted);
-      padding:12px 16px;
-      background:transparent;
-      position:sticky;
-      top:0;
-      backdrop-filter:blur(4px);
-    }
+.cross {
+    font-size: 22px;
+    color: #e64c4c;
+}
 
-    tbody tr{
-      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,252,0.9));
-      border-radius:10px;
-      box-shadow:0 4px 12px rgba(12,20,30,0.04);
-    }
-
-    tbody td{
-      padding:16px;
-      vertical-align:top;
-      font-size:15px;
-      color:#0f172a;
-      border-bottom:0;
-    }
-
-    tbody tr:not(:last-child){
-      margin-bottom:10px;
-    }
-
-    .col-page{
-      width:20%;
-      font-weight:600;
-    }
-
-    .col-buttons{
-      width:35%;
-      color:#0f172a;
-      font-size:14px;
-    }
-
-    .col-func{
-      width:45%;
-      color:#0f172a;
-      font-size:14px;
-    }
-
-    .ia {
-      background: var(--ia-bg);
-      border-left:4px solid var(--accent);
-      border-radius:10px;
-    }
-
-    .tag {
-      display:inline-block;
-      font-size:12px;
-      padding:6px 8px;
-      border-radius:999px;
-      background:#eef6ff;
-      color:var(--accent);
-      margin-left:8px;
-      font-weight:600;
-    }
-
-    /* Responsividade */
-    @media (max-width:900px){
-      .container{padding:16px;}
-      table{min-width:760px;}
-      .col-page{width:28%;}
-      .col-buttons{width:36%;}
-      .col-func{width:36%;}
-    }
-
-    @media (max-width:620px){
-      table{min-width:600px;}
-      body{padding:16px;}
-      .logo{width:44px;height:44px;}
-      h1{font-size:18px;}
-    }
-
-    footer{
-      margin-top:18px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-    }
-
-    .note{color:var(--muted); font-size:13px;}
-    .btn{
-      background:var(--accent);
-      color:white;
-      padding:10px 14px;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:600;
-      box-shadow:0 8px 18px rgba(30,144,255,0.12);
-    }
-  </style>
+.highlight {
+    background: #e9f8ff;
+    font-weight: 700;
+    border-left: 4px solid #00aaff;
+}
+</style>
 </head>
+
 <body>
-  <div class="container" role="main" aria-labelledby="title">
-    <header>
-      <div class="logo" aria-hidden="true">APP</div>
-      <div>
-        <h1 id="title">Tabela de Funcionalidades do APP</h1>
-      </div>
-    </header>
 
-    <div class="table-wrap" role="region" aria-label="Tabela de funcionalidades">
-      <table>
-        <thead>
-          <tr>
-            <th>Página / Tela</th>
-            <th>Botões / Elementos</th>
-            <th>Funcionalidades</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-page">Tela Inicial / Home</td>
-            <td class="col-buttons">Buscar, Categorias, Assistir Resumo, Perfil, Biblioteca</td>
-            <td class="col-func">Navegar, acessar conteúdos, ver recomendações, atalhos para biblioteca da escola</td>
-          </tr>
+<div class="table-container">
+    <h2>Análise de Concorrentes</h2>
+    <p class="subtitle">Diferenciais competitivos no incentivo à leitura e alfabetização</p>
 
-          <tr>
-            <td class="col-page">Login / Cadastro</td>
-            <td class="col-buttons">Entrar, Criar conta, Recuperar senha, Login Google</td>
-            <td class="col-func">Autenticação, integração com contas, onboarding simplificado</td>
-          </tr>
+    <table>
+        <tr>
+            <th>Produto</th>
+            <th>Resumo</th>
+            <th>Vídeo Curto</th>
+            <th>Foco Pedagógico</th>
+            <th>Quiz</th>
+            <th>Integração Escolar</th>
+            <th>Gamificação</th>
+            <th>IA Resumo Animado</th>
+        </tr>
 
-          <tr>
-            <td class="col-page">Biblioteca da Escola</td>
-            <td class="col-buttons">Selecionar livro, Filtrar, Ver detalhes</td>
-            <td class="col-func">Integração com acervo escolar, disponibilidade e localização de exemplares</td>
-          </tr>
+        <tr><td>Leiturinha</td><td class="check">✔</td><td class="cross">✖</td><td class="check">✔</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td></tr>
+        <tr><td>Wiser</td><td class="check">✔</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td></tr>
+        <tr><td>Blinkist</td><td class="check">✔</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td></tr>
+        <tr><td>LeR</td><td class="check">✔</td><td class="cross">✖</td><td class="check">✔ (parcial)</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td></tr>
+        <tr><td>12min</td><td class="check">✔</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td></tr>
+        <tr><td>Storytel</td><td class="check">✔</td><td class="cross">✖</td><td class="check">✔ (kids)</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td></tr>
+        <tr><td>Ubook</td><td class="check">✔</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td></tr>
+        <tr><td>Skoob</td><td class="check">✔</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td><td class="cross">✖</td></tr>
 
-          <tr class="ia">
-            <td class="col-page">Geração de Resumo Animado <span class="tag">IA</span></td>
-            <td class="col-buttons">Gerar Resumo (admin/escola), Editar Vídeo, Aprovar</td>
-            <td class="col-func">IA cria vídeo animado estilo reels/story a partir do livro; ajustes de duração e nível (alfabetização / juvenil)</td>
-          </tr>
+        <tr class="highlight">
+            <td>Nosso App (projeto)</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+            <td class="check">✔</td>
+        </tr>
+    </table>
+</div>
 
-          <tr>
-            <td class="col-page">Tela do Vídeo</td>
-            <td class="col-buttons">Play, Pause, Curtir, Compartilhar, Fazer Quiz, Quero Ler</td>
-            <td class="col-func">Assistir resumo animado, interações sociais, iniciar quiz e registrar engajamento</td>
-          </tr>
-
-          <tr>
-            <td class="col-page">Quiz</td>
-            <td class="col-buttons">Responder, Enviar, Ver resultado</td>
-            <td class="col-func">Avaliação de compreensão; registro de pontuação para badges</td>
-          </tr>
-
-          <tr>
-            <td class="col-page">Badges / Conquistas</td>
-            <td class="col-buttons">Visualizar badges, Ranking, Compartilhar conquista</td>
-            <td class="col-func">Sistema de recompensas por desempenho (badges), gamificação, motivação contínua</td>
-          </tr>
-
-          <tr>
-            <td class="col-page">Marketplace</td>
-            <td class="col-buttons">Comprar resumos, Anunciar livro, Pagar anúncio</td>
-            <td class="col-func">Monetização: conteúdo premium e anúncios de autores/lojas</td>
-          </tr>
-
-          <tr>
-            <td class="col-page">Configurações / Perfil</td>
-            <td class="col-buttons">Editar perfil, Preferências, Plano (Gratuito/Premium), Sair</td>
-            <td class="col-func">Gerenciar conta, acompanhar progresso, definir preferências de conteúdo</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <footer>
-      <p>SQUAD 16</p>
-    </footer>
-  </div>
 </body>
 </html>
