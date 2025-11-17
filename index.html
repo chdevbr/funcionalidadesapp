@@ -2,28 +2,27 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tabela de Funcionalidades — LêAí</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tabela de Funcionalidades</title>
   <style>
     :root{
-      --bg:#f7f9fc;
+      --bg:#f6fbff;
       --card:#ffffff;
-      --accent:#6b46c1;
+      --accent:#1e90ff;
+      --accent-2:#ffd166;
       --muted:#6b7280;
-      --border:#e6e9ef;
+      --ia-bg: linear-gradient(90deg, rgba(30,144,255,0.12), rgba(255,209,102,0.10));
       --radius:12px;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      color-scheme: light;
+      font-family: "Inter", "Segoe UI", Roboto, system-ui, -apple-system, sans-serif;
     }
 
-    *{box-sizing:border-box}
     body{
       margin:0;
-      padding:28px;
-      background:linear-gradient(180deg, var(--bg) 0%, #ffffff 100%);
+      background:var(--bg);
+      color:#0f172a;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      color:#111827;
+      padding:32px;
     }
 
     .container{
@@ -31,276 +30,232 @@
       margin:0 auto;
       background:var(--card);
       border-radius:var(--radius);
-      box-shadow:0 8px 30px rgba(17,24,39,0.06);
-      overflow:hidden;
-      border:1px solid var(--border);
+      box-shadow:0 6px 24px rgba(12,20,30,0.06);
+      padding:22px;
+      border:1px solid rgba(15,23,42,0.04);
     }
 
     header{
-      padding:28px 32px;
-      background:linear-gradient(90deg, rgba(107,70,193,0.08), rgba(107,70,193,0.03));
-      border-bottom:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:18px;
     }
 
-    header h1{
+    .logo{
+      width:52px;
+      height:52px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#7bd389);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      box-shadow:0 6px 18px rgba(30,144,255,0.12);
+    }
+
+    h1{
       margin:0;
       font-size:20px;
-      letter-spacing:-0.2px;
-      color:var(--accent);
+      letter-spacing:0.2px;
     }
 
-    header p{
-      margin:6px 0 0 0;
+    p.subtitle{
+      margin:6px 0 18px 0;
       color:var(--muted);
-      font-size:13px;
+      font-size:14px;
     }
 
     .table-wrap{
-      padding:20px;
-      display:grid;
-      gap:14px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 1.6fr 1.6fr;
-      gap:16px;
-      align-items:start;
-    }
-
-    .col-head{
-      background:linear-gradient(180deg, rgba(107,70,193,0.04), rgba(107,70,193,0.02));
-      padding:12px 14px;
+      overflow:auto;
       border-radius:10px;
-      font-weight:600;
-      color:var(--accent);
-      border:1px solid var(--border);
     }
 
-    .row{
-      display:grid;
-      grid-template-columns: 1fr 1.6fr 1.6fr;
-      gap:16px;
-      padding:14px;
-      border-bottom:1px dashed #eef2ff;
-      align-items:start;
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0 12px;
+      min-width:880px;
     }
 
-    .row:last-child{border-bottom:none}
-
-    .cell{
+    thead th{
+      text-align:left;
+      font-size:13px;
+      color:var(--muted);
+      padding:12px 16px;
       background:transparent;
-      padding:6px 8px;
-      font-size:14px;
+      position:sticky;
+      top:0;
+      backdrop-filter:blur(4px);
+    }
+
+    tbody tr{
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,252,0.9));
+      border-radius:10px;
+      box-shadow:0 4px 12px rgba(12,20,30,0.04);
+    }
+
+    tbody td{
+      padding:16px;
+      vertical-align:top;
+      font-size:15px;
       color:#0f172a;
+      border-bottom:0;
     }
 
-    .cell ul{margin:6px 0 0 18px;padding:0}
-    .cell li{margin:6px 0}
-
-    .muted{color:var(--muted);font-size:13px}
-
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#fbf7ff;border:1px solid #f0e9ff;color:var(--accent);font-weight:600;font-size:12px}
-
-    @media (max-width:980px){
-      .grid, .row{grid-template-columns: 1fr;}
-      .col-head{display:none}
-      .row{border-bottom:1px solid var(--border);padding:12px}
-      .cell{padding:10px}
+    tbody tr:not(:last-child){
+      margin-bottom:10px;
     }
 
-    @media (min-width:981px){
-      .row{
-        border-left:8px solid transparent;
-      }
-      .row:nth-child(odd){background:linear-gradient(180deg, rgba(250,250,255,1), rgba(248,247,255,1));}
+    .col-page{
+      width:20%;
+      font-weight:600;
     }
 
-    footer{padding:14px 20px;background:#ffffff;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-    footer .note{color:var(--muted);font-size:13px}
+    .col-buttons{
+      width:35%;
+      color:#0f172a;
+      font-size:14px;
+    }
 
+    .col-func{
+      width:45%;
+      color:#0f172a;
+      font-size:14px;
+    }
+
+    .ia {
+      background: var(--ia-bg);
+      border-left:4px solid var(--accent);
+      border-radius:10px;
+    }
+
+    .tag {
+      display:inline-block;
+      font-size:12px;
+      padding:6px 8px;
+      border-radius:999px;
+      background:#eef6ff;
+      color:var(--accent);
+      margin-left:8px;
+      font-weight:600;
+    }
+
+    /* Responsividade */
+    @media (max-width:900px){
+      .container{padding:16px;}
+      table{min-width:760px;}
+      .col-page{width:28%;}
+      .col-buttons{width:36%;}
+      .col-func{width:36%;}
+    }
+
+    @media (max-width:620px){
+      table{min-width:600px;}
+      body{padding:16px;}
+      .logo{width:44px;height:44px;}
+      h1{font-size:18px;}
+    }
+
+    footer{
+      margin-top:18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+
+    .note{color:var(--muted); font-size:13px;}
+    .btn{
+      background:var(--accent);
+      color:white;
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 8px 18px rgba(30,144,255,0.12);
+    }
   </style>
 </head>
 <body>
-  <div class="container" role="region" aria-label="Tabela de funcionalidades do aplicativo LeiaAi">
+  <div class="container" role="main" aria-labelledby="title">
     <header>
-      <h1>Tabela de Funcionalidades do Aplicativo</h1>
+      <div class="logo" aria-hidden="true">APP</div>
+      <div>
+        <h1 id="title">Tabela de Funcionalidades do APP</h1>
+      </div>
     </header>
 
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Tabela de funcionalidades">
+      <table>
+        <thead>
+          <tr>
+            <th>Página / Tela</th>
+            <th>Botões / Elementos</th>
+            <th>Funcionalidades</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-page">Tela Inicial / Home</td>
+            <td class="col-buttons">Buscar, Categorias, Assistir Resumo, Perfil, Biblioteca</td>
+            <td class="col-func">Navegar, acessar conteúdos, ver recomendações, atalhos para biblioteca da escola</td>
+          </tr>
 
-      <div class="grid" aria-hidden="true">
-        <div class="col-head">Página / Tela</div>
-        <div class="col-head">Elementos / Botões</div>
-        <div class="col-head">Funcionalidades</div>
-      </div>
+          <tr>
+            <td class="col-page">Login / Cadastro</td>
+            <td class="col-buttons">Entrar, Criar conta, Recuperar senha, Login Google</td>
+            <td class="col-func">Autenticação, integração com contas, onboarding simplificado</td>
+          </tr>
 
-      <section class="row">
-        <div class="cell"><strong>Tela de Login / Cadastro</strong></div>
-        <div class="cell">
-          <ul>
-            <li>Entrar com e-mail e senha</li>
-            <li>Entrar com Google</li>
-            <li>Criar conta</li>
-            <li>Esqueci minha senha</li>
-          </ul>
-        </div>
-        <div class="cell">
-          <ul>
-            <li>Autenticação de usuário</li>
-            <li>Integração com Google</li>
-            <li>Recuperação de senha</li>
-          </ul>
-        </div>
-      </section>
+          <tr>
+            <td class="col-page">Biblioteca da Escola</td>
+            <td class="col-buttons">Selecionar livro, Filtrar, Ver detalhes</td>
+            <td class="col-func">Integração com acervo escolar, disponibilidade e localização de exemplares</td>
+          </tr>
 
-      <section class="row">
-        <div class="cell"><strong>Home (Tela Principal)</strong></div>
-        <div class="cell">
-          <ul>
-            <li>Botão “Aprendendo a Ler”</li>
-            <li>Botão “Quero Ler Mais”</li>
-            <li>Cards de vídeos</li>
-            <li>Botão “Quero Ler”</li>
-            <li>Curtir ❤️</li>
-            <li>Barra inferior (Home, Buscar, Meus Livros, Perfil)</li>
-            <li>Ícone de busca 🔍</li>
-            <li>Ícone de perfil 👤</li>
-          </ul>
-        </div>
-        <div class="cell">
-          <ul>
-            <li>Seleção de categoria finalidades</li>
-            <li>Visualizar feed de vídeos de livros</li>
-            <li>Favoritar vídeos</li>
-            <li>Acessar prévia e detalhes do livro</li>
-            <li>Navegação geral</li>
-          </ul>
-        </div>
-      </section>
+          <tr class="ia">
+            <td class="col-page">Geração de Resumo Animado <span class="tag">IA</span></td>
+            <td class="col-buttons">Gerar Resumo (admin/escola), Editar Vídeo, Aprovar</td>
+            <td class="col-func">IA cria vídeo animado estilo reels/story a partir do livro; ajustes de duração e nível (alfabetização / juvenil)</td>
+          </tr>
 
-      <section class="row">
-        <div class="cell"><strong>Tela de Vídeo</strong></div>
-        <div class="cell">
-          <ul>
-            <li>Play / pause</li>
-            <li>Barra de progresso</li>
-            <li>Curtir ❤️</li>
-            <li>Botão “Quero Ler”</li>
-            <li>Enviar / compartilhar</li>
-            <li>Comentários (opcional no futuro)</li>
-          </ul>
-        </div>
-        <div class="cell">
-          <ul>
-            <li>Assistir vídeo de resumo</li>
-            <li>Interagir com conteúdo</li>
-            <li>Acessar informações completas do livro</li>
-            <li>Enviar link para colegas</li>
-          </ul>
-        </div>
-      </section>
+          <tr>
+            <td class="col-page">Tela do Vídeo</td>
+            <td class="col-buttons">Play, Pause, Curtir, Compartilhar, Fazer Quiz, Quero Ler</td>
+            <td class="col-func">Assistir resumo animado, interações sociais, iniciar quiz e registrar engajamento</td>
+          </tr>
 
-      <section class="row">
-        <div class="cell"><strong>Tela de Detalhes do Livro</strong></div>
-        <div class="cell">
-          <ul>
-            <li>Capa do livro</li>
-            <li>Descrição</li>
-            <li>Avaliações</li>
-            <li>Ver onde encontrar 📍</li>
-            <li>Adicionar aos favoritos ⭐</li>
-            <li>Botão “Ler online” (se disponível)</li>
-            <li>Botão “Reservar na biblioteca”</li>
-            <li>Botão “Comprar versão premium”</li>
-          </ul>
-        </div>
-        <div class="cell">
-          <ul>
-            <li>Informações completas do livro</li>
-            <li>Localização na biblioteca da escola</li>
-            <li>Acesso ao texto completo se permitido</li>
-            <li>Fluxo de monetização</li>
-          </ul>
-        </div>
-      </section>
+          <tr>
+            <td class="col-page">Quiz</td>
+            <td class="col-buttons">Responder, Enviar, Ver resultado</td>
+            <td class="col-func">Avaliação de compreensão; registro de pontuação para badges</td>
+          </tr>
 
-      <section class="row">
-        <div class="cell"><strong>Tela Buscar / Pesquisa</strong></div>
-        <div class="cell">
-          <ul>
-            <li>Campo de busca</li>
-            <li>Filtro (gênero, idade, alfabetização, pago/gratuito)</li>
-            <li>Resultados</li>
-          </ul>
-        </div>
-        <div class="cell">
-          <ul>
-            <li>Encontrar livros e vídeos por categoria</li>
-            <li>Filtrar conteúdos</li>
-          </ul>
-        </div>
-      </section>
+          <tr>
+            <td class="col-page">Badges / Conquistas</td>
+            <td class="col-buttons">Visualizar badges, Ranking, Compartilhar conquista</td>
+            <td class="col-func">Sistema de recompensas por desempenho (badges), gamificação, motivação contínua</td>
+          </tr>
 
-      <section class="row">
-        <div class="cell"><strong>Tela Meus Livros</strong></div>
-        <div class="cell">
-          <ul>
-            <li>Favoritos</li>
-            <li>Históricos</li>
-            <li>Status (em leitura, concluído, salvo)</li>
-          </ul>
-        </div>
-        <div class="cell">
-          <ul>
-            <li>Gerenciar progresso de leitura</li>
-            <li>Retomar vídeos e livros</li>
-          </ul>
-        </div>
-      </section>
+          <tr>
+            <td class="col-page">Marketplace</td>
+            <td class="col-buttons">Comprar resumos, Anunciar livro, Pagar anúncio</td>
+            <td class="col-func">Monetização: conteúdo premium e anúncios de autores/lojas</td>
+          </tr>
 
-      <section class="row">
-        <div class="cell"><strong>Tela Perfil</strong></div>
-        <div class="cell">
-          <ul>
-            <li>Nome e foto do usuário</li>
-            <li>Configurações ⚙️</li>
-            <li>Plano gratuito/Premium</li>
-            <li>Estatísticas de leitura</li>
-            <li>Sair</li>
-          </ul>
-        </div>
-        <div class="cell">
-          <ul>
-            <li>Editar dados pessoais</li>
-            <li>Controle de assinatura</li>
-            <li>Informações sobre desempenho</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="row">
-        <div class="cell"><strong>Tela Administrativa (para autores e escolas) (opcional)</strong></div>
-        <div class="cell">
-          <ul>
-            <li>Adicionar livro</li>
-            <li>Criar vídeo resumo</li>
-            <li>Dashboard de anúncios</li>
-          </ul>
-        </div>
-        <div class="cell">
-          <ul>
-            <li>Upload de materiais</li>
-            <li>Gestão de anúncios e monetização</li>
-          </ul>
-        </div>
-      </section>
-
+          <tr>
+            <td class="col-page">Configurações / Perfil</td>
+            <td class="col-buttons">Editar perfil, Preferências, Plano (Gratuito/Premium), Sair</td>
+            <td class="col-func">Gerenciar conta, acompanhar progresso, definir preferências de conteúdo</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <footer>
-      <div class="note">Tabela de funcionalidades</div>
-      <div class="pill">Completa</div>
+      <p>SQUAD 16</p>
     </footer>
   </div>
 </body>
